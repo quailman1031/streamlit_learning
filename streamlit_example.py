@@ -1,7 +1,14 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import reportlab
+from reportlab.pdfgen import canvas
+
+def hello(c):
+    c.drawString(100,100,"Hello World")
+c = canvas.Canvas("hello.pdf")
+hello(c)
+c.showPage()
+c.save()
 
 st.title('Uber pickups in NYC')
 
