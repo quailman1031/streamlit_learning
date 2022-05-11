@@ -33,6 +33,40 @@ from reportlab.pdfbase.pdfmetrics import registerFont, registerFontFamily
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.enums import TA_RIGHT
 
+# Set the page height and width
+HEIGHT = 11 * inch
+WIDTH = 8.5 * inch
+
+
+
+patient_data_placement = WIDTH/2.0 - 1.0*inch
+specimen_details_placement = patient_data_placement + 3.0*inch
+
+# Set our styles
+styles = getSampleStyleSheet()
+styles.add(ParagraphStyle(name='Content',
+                          #fontFamily='Inconsolata',
+                          fontSize=8,
+                          spaceAfter=.1*inch))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
