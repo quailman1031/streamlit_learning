@@ -363,7 +363,40 @@ if left.button('STORE CHOICE'):
         lang_choice = lang_choice.split(": ")
         st.session_state[(med_choice,variant_choice)] = {"source": lang_choice[0],"lang": lang_choice[1]}
     
+#submit = form.form_submit_button("Generate PDF")
+# =============================================================================
+# if right.button("CLEAR CURRENT"):
+#     for m in meds["CURRENT"]:
+#         clear(m)
+# 
+# if right.button("CLEAR POTENTIAL"):
+#     for m in meds["POTENTIAL"]:
+#         clear(m)
+# 
+# if right.button("CLEAR ALL"):
+#     summary_text = ''
+#     for c in ["CURRENT","POTENTIAL"]:
+#         for m in meds[c]:
+#             clear(m)
+# 
+# =============================================================================
+#for c in ["CURRENT","POTENTIAL"]:
+# =============================================================================
+# for c in ["CURRENT","POTENTIAL"]:
+#     summary_text += c + " MEDICATIONS\n\n"
+#     for m in medicines[c]:
+#         if m in st.session_state:
+#             summary_text += "%s: %s (SOURCE: %s)"%(m, st.session_state[m]["lang"], st.session_state[m]["source"]) + "\n\n"
+# =============================================================================
+for m in medicines:
+    summary_text += m.upper() + "\n\n"
+    for v in variants:
+        if (m,v) in st.session_state:
+            summary_text += v.upper() + "\n\n"
+            summary_text += "%s: %s (SOURCE: %s)"%(m, st.session_state[(m,v)]["lang"], st.session_state[(m,v)]["source"]) + "\n\n\n"
 
+#right.write("=== SUMMARY ===")
+right.write(summary_text)
 
 
 
