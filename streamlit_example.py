@@ -165,7 +165,23 @@ def myPageWrapper2(patient_data, specimen_details):
         canvas.restoreState()
     return myPage
 
+st.write(
+    """This application allows lab personel to select appropriate language from pharmacogenetic sources
+    and generates a report for the ordering physician"""
+)
 
+#st.button("Import patient lab results")
+uploaded_file = st.file_uploader("Import patient lab results")
+patient_data = {}
+
+
+patient_data = {'name': {'first':'Janae', 'last': 'Spencer'}, 
+                'DOB':'07/04/1990', 
+                'SEX': 'Female',
+                'ACC': 'A001237-5-05'}
+specimen_details = {'date_received':'04/01/2022',
+                    'date_report': '05/01/2022',
+                    'test_type': 'AOA'}
 
 
 
