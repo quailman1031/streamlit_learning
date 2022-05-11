@@ -250,7 +250,37 @@ def clear(option):
     if option in st.session_state:
         del st.session_state[option]
 
+#meds = {}
+#meds["CURRENT"] = ["Metoprolol, Ondansetron, Strattera","Trimipramine (Surmontil®)"]
+#meds["POTENTIAL"] =  ["Atomoxetine (Strattera®)","Succinylcholine (Anectine®, Quelicin®)"]
+#
+#language = {"Metoprolol, Ondansetron, Strattera":{"FDA":"blah blah "*9,"CPIC":"blah blah "*9,"PharmGKB":"blah blah "*9},
+#            "Atomoxetine (Strattera®)":{"FDA":"blah blah "*9,"CPIC":"blah blah "*9,"PharmGKB":"blah blah "*9},
+#            "Succinylcholine (Anectine®, Quelicin®)":{"FDA":"blah blah "*9,"CPIC":"blah blah "*9,"PharmGKB":"blah blah "*9},
+#            "Trimipramine (Surmontil®)":{"FDA":"blah blah "*9,"CPIC":"blah blah "*9,"PharmGKB":"blah blah "*9},
+#            }
 
+summary_text = ''
+
+# =============================================================================
+# left.write("Fill in the data:")
+# form = left.form("template_form")
+# 
+# student = form.text_input("Student name")
+# course = form.selectbox(
+#     "Choose course",
+#     ["Report Generation in Streamlit", "Advanced Cryptography"],
+#     index=0,
+# )
+# grade = form.slider("Grade", 1, 100, 60)
+# =============================================================================
+
+variant_choice = left.radio("Select gene variant to work on:",
+                     variants)
+left.write("You selected: %s"%variant_choice)
+
+#variant_relevant_rows = pgx[pgx["pgkb_GenotypeAllele"]==variant_choice]
+variant_relevant_rows = pgx[pgx["GenotypeAllele"]==variant_choice]
 
 
 
