@@ -189,8 +189,9 @@ specimen_details = {'date_received':'04/01/2022',
 if uploaded_file: #is not None:  
     #with open(uploaded_file.name) as json_file:
     #    lab_results = json.load(json_file)
-    lab_results = json.load( open(uploaded_file.name) )
+    #lab_results = json.load( open(uploaded_file.name) )
     #lab_results = json.load(uploaded_file.name)
+    lab_results = pd.read_json(uploaded_file)
     patient_data["ID"] = lab_results['PATIENT']['id']
     patient_data["DOB"] = lab_results['PATIENT']['birthDate']
   
