@@ -405,7 +405,8 @@ if right.button("DISPLAY REPORT"):
     with open("dummy.pdf", "rb") as f:
         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
         
-    pdf_display = F'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">'
+    #pdf_display = F'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">'
+    pdf_display = F'<embed src="https://docs.wbcsd.org/2018/09/Good_Life_Goals/Media_Kit.pdf" width="700" height="1000" type="application/pdf">'
 
     # Displaying File
     right.markdown(pdf_display, unsafe_allow_html=True)
