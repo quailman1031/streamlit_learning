@@ -186,7 +186,7 @@ specimen_details = {'date_received':'04/01/2022',
 #if uploaded_file:
 #    df = pd.read_csv(uploaded_file)
 
-if uploaded_file #is not None:  
+if uploaded_file: #is not None:  
     #with open(uploaded_file.name) as json_file:
     #    lab_results = json.load(json_file)
     lab_results = json.load( open(uploaded_file.name) )
