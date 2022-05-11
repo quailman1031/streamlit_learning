@@ -409,7 +409,8 @@ if right.button("DISPLAY REPORT"):
     pdf_display = F'<embed src="https://docs.wbcsd.org/2018/09/Good_Life_Goals/Media_Kit.pdf" width="700" height="1000" type="application/pdf">'
 
     # Displaying File
-    right.markdown(pdf_display, unsafe_allow_html=True)
+    #right.markdown(pdf_display, unsafe_allow_html=True)
+    right.markdown("# Hello!", unsafe_allow_html=True)
 
 
 #def hello(c):
