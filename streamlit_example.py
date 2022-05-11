@@ -305,6 +305,15 @@ for idx,row in pgkb.iterrows():
     lang_options.append( "PGKB: %s"%text_block )
 #st.write(lang_options)
 
+#lang_options = ["%s: %s"%(k,language[option][k]) for k in language[option].keys() ]
+lang_options.append("CUSTOM TEXT BLOCK")
+lang_options.append("CLEAR ------")
+lang_choice = left.radio("What language do you want to report",
+     lang_options )
+if lang_choice == "CUSTOM TEXT BLOCK":
+    lang_choice = left.text_input('Compose text and press [enter] to submit to form', 'CUSTOM: ')
+#st.write(pgkb)
+
 
 
 
