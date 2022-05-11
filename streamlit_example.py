@@ -49,7 +49,67 @@ styles.add(ParagraphStyle(name='Content',
                           fontSize=8,
                           spaceAfter=.1*inch))
 
+def generate_print_pdf(data, patient_data, specimen_details):
+    #if exists("dummy.pdf"):
+    #    remove("dummy.pdf")
+    pdfname = 'dummy.pdf'
+    doc = SimpleDocTemplate(
+        pdfname,
+        pagesize=letter,
+        bottomMargin=.5 * inch,
+        topMargin=2.0 * inch,
+        rightMargin=.4 * inch,
+        leftMargin=.4 * inch)  # set the doc template
+    style = styles["Normal"]  # set the style to normal
+    elements = []  # create a blank elements
+# =============================================================================
+#     contentTable = Table(
+#         data,
+#         colWidths=[
+#             0.8 * inch,
+#             6.9 * inch])
+#     tblStyle = TableStyle([
+#         ('TEXTCOLOR', (0, 0), (-1, -1), colors.black),
+#         #('FONT', (0, 0), (-1, -1), 'Inconsolata'),
+#         ('FONTSIZE', (0, 0), (-1, -1), 8),
+#         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+#         ('ALIGN', (0, 0), (-1, -1), 'LEFT')])
+#     contentTable.setStyle(tblStyle)
+#     elements.append(contentTable)
+    #elements.append(Table(data.split('\n')))
+    for p in data.split('\n'):
+        elements.append(Paragraph(p, styles["Normal"]))
+# =============================================================================
+    
+# =============================================================================
+#     data= [["CATEGORY", "DRUG CLASS", "STANDARD PRECAUTIONS", "USE WITH CAUTION", 'CONSIDER ALTERNATIVES'],
+#     [' ', 'Anti-ADHD Agents', ' ', 'Atomoxetine (Strattera®)', ' '],
+#     ['20', '21', '22', '23', '24'],
+#     ['30', '31', '32', '33', '34']]
+#     
+#     t=Table(data,5*[0.4*inch], 4*[0.4*inch])
+#     
+#     t.setStyle(TableStyle([('ALIGN',(1,1),(-2,-2),'RIGHT'),
+#     ('TEXTCOLOR',(1,1),(-2,-2),colors.red),
+#     ('VALIGN',(0,0),(0,-1),'TOP'),
+#     ('TEXTCOLOR',(0,0),(0,-1),colors.blue),
+#     ('ALIGN',(0,-1),(-1,-1),'CENTER'),
+#     ('VALIGN',(0,-1),(-1,-1),'MIDDLE'),
+#     ('TEXTCOLOR',(0,-1),(-1,-1),colors.green),
+#     ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
+#     ('BOX', (0,0), (-1,-1), 0.25, colors.black),
+#     ]))
+#             elements.append(t)
+# =============================================================================
+    
 
+    
+    doc.build(
+        elements,
+        #onFirstPage=myPageWrapper(contact)
+        onFirstPage=myPageWrapper2(patient_data,specimen_details)
+        )
+    return pdfname
 
 
 
