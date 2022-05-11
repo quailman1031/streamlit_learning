@@ -296,6 +296,14 @@ relevant_rows = variant_relevant_rows[variant_relevant_rows["chemicals"]==med_ch
 cpic = relevant_rows.loc[:,[col for col in relevant_rows.columns if 'cpic' in col]]
 pgkb = relevant_rows.loc[:,[col for col in relevant_rows.columns if 'cpic' not in col]]
 
+lang_options = []
+for idx,row in cpic.iterrows():
+    text_block = '\n'.join( [str(c) for c in row if type(c)==type('') or not math.isnan(c)] )
+    lang_options.append( "CPIC: %s"%text_block )
+for idx,row in pgkb.iterrows():
+    text_block = '\n'.join( [str(c) for c in row if type(c)==type('') or not math.isnan(c)] )
+    lang_options.append( "PGKB: %s"%text_block )
+#st.write(lang_options)
 
 
 
