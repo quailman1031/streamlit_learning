@@ -231,7 +231,24 @@ for idx,row in pgx.iterrows():
     variants = [x for x in variants if type(x)==type('') or not math.isnan(x)]
     medicines = [x for x in medicines if type(x)==type('') or not math.isnan(x)]
 
+#st.write(variants)
+#st.write(medicines)
 
+
+
+left, right = st.columns(2)
+
+right.write("SUMMARY")
+
+
+#right.image("template.png", width=300)
+
+#env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
+#template = env.get_template("template.html")
+
+def clear(option):
+    if option in st.session_state:
+        del st.session_state[option]
 
 
 
