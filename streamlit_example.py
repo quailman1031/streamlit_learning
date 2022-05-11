@@ -111,7 +111,59 @@ def generate_print_pdf(data, patient_data, specimen_details):
         )
     return pdfname
 
-
+def myPageWrapper2(patient_data, specimen_details):
+    # template for static, non-flowables, on the first page
+    # draws all of the contact information at the top of the page
+    def myPage(canvas, doc):
+        canvas.saveState()  # save the current state
+        # patient data column
+        canvas.drawString(
+            patient_data_placement,
+            HEIGHT - (.4 * inch),
+            "Patient Information" )
+        canvas.drawString(
+            patient_data_placement,
+            HEIGHT - (.6 * inch),
+            #"Name: %s, %s"%(patient_data['name']['last'],patient_data['name']['first']) )
+            "Patient ID: %s"%patient_data['ID'] )
+        canvas.drawString(
+            patient_data_placement,
+            HEIGHT - (.8 * inch),
+            "DOB: %s"%patient_data['DOB'])  
+        canvas.drawString(
+            patient_data_placement,
+            HEIGHT - (1.0 * inch),
+            "Sex: %s"%patient_data['SEX'])
+        canvas.drawString(
+			patient_data_placement,
+			HEIGHT - (1.2 * inch),
+			"ACC #: %s"%patient_data['ACC'])
+        # test data column
+        canvas.drawString(
+            specimen_details_placement,
+            HEIGHT - (.4 * inch),
+            "Specimen Details" )
+        canvas.drawString(
+            specimen_details_placement,
+            HEIGHT - (.6 * inch),
+            "Received Date: %s"%specimen_details['date_received'] )
+        canvas.drawString(
+            specimen_details_placement,
+            HEIGHT - (.8 * inch),
+            "Report Date: %s"%specimen_details['date_report'])  
+        canvas.drawString(
+            specimen_details_placement,
+            HEIGHT - (1.0 * inch),
+            "Test Type: %s"%specimen_details['test_type'])
+        canvas.drawCentredString(
+			WIDTH / 2.0,
+			HEIGHT - (1.6 * inch),
+			"Clinical Genetic Report")
+        canvas.line(.4 * inch, HEIGHT - 1.8*inch, 
+            WIDTH - (.4 * inch), HEIGHT - 1.8*inch)
+        # restore the state to what it was when saved
+        canvas.restoreState()
+    return myPage
 
 
 
