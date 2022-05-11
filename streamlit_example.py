@@ -314,6 +314,55 @@ if lang_choice == "CUSTOM TEXT BLOCK":
     lang_choice = left.text_input('Compose text and press [enter] to submit to form', 'CUSTOM: ')
 #st.write(pgkb)
 
+# =============================================================================
+# med_cat = left.radio("Select medication set to work on:",
+#                    ("CURRENT MEDICATIONS", "POTENTIAL MEDICATIONS") )
+# 
+# left.write(med_cat)
+# option = left.radio("Select language for ", 
+#           (m for m in meds[med_cat.split()[0]]) )
+# =============================================================================
+
+    
+#option = st.selectbox(
+#     'select among current meds',
+#     [m for m in med_current])
+
+#summary += option
+
+#print( option)
+# =============================================================================
+# left.write("You selected: %s"%option)
+# #left.write('You selected:', option)
+# lang_options = ["%s: %s"%(k,language[option][k]) for k in language[option].keys() ]
+# lang_options.append("CUSTOM TEXT BLOCK")
+# lang_options.append("CLEAR ------")
+# lang_choice = left.radio("What language do you want to report",
+#      lang_options )
+# if lang_choice == "CUSTOM TEXT BLOCK":
+#     lang_choice = left.text_input('Movie title', 'CUSTOM: ')
+# =============================================================================
+    
+# =============================================================================
+# if left.button('STORE CHOICE'):
+#     #if 'key' not in st.session_state:
+#     if lang_choice == "CLEAR ------":
+#         #st.session_state[option] = {"source": '', "lang": ''} 
+#         clear(option)
+#     else:
+#         lang_choice = lang_choice.split(": ")
+#         st.session_state[option] = {"source": lang_choice[0],"lang": lang_choice[1]}
+# =============================================================================
+        
+if left.button('STORE CHOICE'):
+    #if 'key' not in st.session_state:
+    if lang_choice == "CLEAR ------":
+        #st.session_state[option] = {"source": '', "lang": ''} 
+        clear(med_choice)
+    else:
+        lang_choice = lang_choice.split(": ")
+        st.session_state[(med_choice,variant_choice)] = {"source": lang_choice[0],"lang": lang_choice[1]}
+    
 
 
 
