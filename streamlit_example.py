@@ -398,7 +398,17 @@ for m in medicines:
 #right.write("=== SUMMARY ===")
 right.write(summary_text)
 
+if right.button("DISPLAY REPORT"):
+    generate_print_pdf(summary_text,patient_data, specimen_details)
+   # with open("dummy.pdf", "rb") as pdf_file:
+   #     PDFbyte = pdf_file.read()
+    with open("dummy.pdf", "rb") as f:
+        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+        
+    pdf_display = F'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">'
 
+    # Displaying File
+    right.markdown(pdf_display, unsafe_allow_html=True)
 
 
 def hello(c):
