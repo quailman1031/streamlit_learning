@@ -282,7 +282,19 @@ left.write("You selected: %s"%variant_choice)
 #variant_relevant_rows = pgx[pgx["pgkb_GenotypeAllele"]==variant_choice]
 variant_relevant_rows = pgx[pgx["GenotypeAllele"]==variant_choice]
 
+#for m in medicines:
+    #r = variant_relevant_rows[variant_relevant_rows["pgkb_chemicals"]==m]
+#med_options = pd.Series(variant_relevant_rows["pgkb_chemicals"]).unique()
+med_options = pd.Series(variant_relevant_rows["chemicals"]).unique()
+med_choice = left.radio("Select medicine:",
+                     med_options)
+left.write("You selected: %s"%med_choice)
 
+#relevant_rows = variant_relevant_rows[variant_relevant_rows["pgkb_chemicals"]==med_choice]
+relevant_rows = variant_relevant_rows[variant_relevant_rows["chemicals"]==med_choice]
+
+cpic = relevant_rows.loc[:,[col for col in relevant_rows.columns if 'cpic' in col]]
+pgkb = relevant_rows.loc[:,[col for col in relevant_rows.columns if 'cpic' not in col]]
 
 
 
