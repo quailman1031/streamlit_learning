@@ -183,7 +183,25 @@ specimen_details = {'date_received':'04/01/2022',
                     'date_report': '05/01/2022',
                     'test_type': 'AOA'}
 
-
+if uploaded_file is not None:  
+    with open(uploaded_file.name) as json_file:
+        lab_results = json.load(json_file)
+    #lab_results = json.load(uploaded_file.name)
+    patient_data["ID"] = lab_results['PATIENT']['id']
+    patient_data["DOB"] = lab_results['PATIENT']['birthDate']
+  
+    
+    #st.write("comparing patient variant data to available pharmogenetic data...")
+    if "pdata_loaded" not in st.session_state:
+        my_bar = st.progress(0)
+        status_text = st.empty()
+        for percent_complete in range(100):
+             time.sleep(0.1)
+             my_bar.progress(percent_complete + 1)
+             status_text.text("comparing patient variant data to available pharmogenetic data...")
+        status_text = st.empty()
+        st.success("Patient data processing complete")
+        st.session_state["pdata_loaded"] = True
 
 
 
