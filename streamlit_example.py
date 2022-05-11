@@ -203,7 +203,27 @@ if uploaded_file is not None:
         st.success("Patient data processing complete")
         st.session_state["pdata_loaded"] = True
 
-
+#pgx = pd.read_csv('pgkb_cpic.txt',sep='\t')
+uploaded_file = st.file_uploader("Import PharmGen data")
+if uploaded_file is not None:  
+    with open(uploaded_file.name) as tsv_file:
+        pgx = pd.read_csv(tsv_file,sep='\t')
+#pgx = pd.read_csv('PharmGenResults1.txt',sep='\t')
+variants = []
+medicines = []
+for idx,row in pgx.iterrows():
+# =============================================================================
+#     if row["pgkb_GenotypeAllele"] not in variants:
+#         variants.append( row["pgkb_GenotypeAllele"] )
+#     if row["pgkb_chemicals"] not in medicines:
+#         medicines.append( row["pgkb_chemicals"] )
+# =============================================================================
+    if row["GenotypeAllele"] not in variants:
+        variants.append( row["GenotypeAllele"] )
+    if row["chemicals"] not in medicines:
+        medicines.append( row["chemicals"] )
+    variants = [x for x in variants if type(x)==type('') or not math.isnan(x)]
+    medicines = [x for x in medicines if type(x)==type('') or not math.isnan(x)]
 
 
 
