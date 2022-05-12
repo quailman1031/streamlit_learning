@@ -38,6 +38,24 @@ HEIGHT = 11 * inch
 WIDTH = 8.5 * inch
 
 
+with open(st.file_uploader("Attempt pdf file").name, "rb") as f:
+    base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+        
+#pdf_display = F'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">'
+#pdf_display = F'<embed src="https://d30b7srod7pe7m.cloudfront.net/uploads/2020/08/Figure_Managing-acute-asthma-in-adults_web.pdf" width="700" height="1000" type="application/pdf">'
+#pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
+pdf_display = F'''<iframe src="data:application/pdf;base64,{base64_pdf}" width="100%" height="100%">
+This browser does not support PDFs. Please download the PDF to view it: 
+<a href="data:application/pdf;base64,{base64_pdf}">Download PDF</a></iframe>'''
+#st.write(pdf_display)
+
+# Displaying File
+st.markdown(pdf_display, unsafe_allow_html=True)
+
+
+
+
+
 
 patient_data_placement = WIDTH/2.0 - 1.0*inch
 specimen_details_placement = patient_data_placement + 3.0*inch
